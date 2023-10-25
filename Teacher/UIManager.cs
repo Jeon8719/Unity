@@ -6,13 +6,13 @@ using System.IO;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("ÀÌ¿ë ¾à°ü")]
+    [Header("ì´ìš© ì•½ê´€")]
     public Toggle confirm1;
     public Scrollbar confirm_check1;
-    [Header("°³ÀÎ Á¤º¸ ÀÌ¿ë")]
+    [Header("ê°œì¸ ì •ë³´ ì´ìš©")]
     public Toggle confirm2;
     public Scrollbar confirm_check2;
-    [Header("È®ÀÎ")]
+    [Header("í™•ì¸")]
     public Button confirm_btn;
 
     public Text perms;
