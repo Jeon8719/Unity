@@ -7,7 +7,7 @@ public class SwitchAction : MonoBehaviour
     public GameObject targetMoveBlock;
     public Sprite imageOn;
     public Sprite imageOff;
-    public bool on = false; //½ºÀ§Ä¡ È°¼ºÈ­ ¿©ºÎ (on = true, off = false)
+    public bool on = false; //Â½ÂºÃ€Â§Ã„Â¡ ÃˆÂ°Â¼ÂºÃˆÂ­ Â¿Â©ÂºÃŽ (on = true, off = false)
 
     private void Start()
     {
