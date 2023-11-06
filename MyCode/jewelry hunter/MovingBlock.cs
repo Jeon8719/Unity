@@ -8,10 +8,10 @@ public class MovingBlock : MonoBehaviour
     public float wait = 0.0f;
     public bool isMoveWhenOn = false;
     public bool isCanMove = true;
-    float perDX;  //ÇÁ·¹ÀÓ´ç x°Å¸®
-    float perDY;  //ÇÁ·¹ÀÓ´ç Y°Å¸®
-    Vector3 defPos; //½ÃÀÛÀ§Ä¡
-    bool isReverse = false; //¹ÝÀü¿©ºÎ
+    float perDX;  //í”„ë ˆìž„ë‹¹ xê±°ë¦¬
+    float perDY;  //í”„ë ˆìž„ë‹¹ Yê±°ë¦¬
+    Vector3 defPos; //ì‹œìž‘ìœ„ì¹˜
+    bool isReverse = false; //ë°˜ì „ì—¬ë¶€
     // Start is called before the first frame update
     void Start()
     {
@@ -36,24 +36,24 @@ public class MovingBlock : MonoBehaviour
             bool endY = false;
             if (isReverse)
             {
-                //¹Ý´ë ¹æÇâÀ¸·Î ÀÌµ¿ÇÏ´Â °æ¿ì
-                //ÀÌµ¿·®ÀÌ ¾ç¼öÀÌ°í ÀÌµ¿ À§Ä¡°¡ ÃÊ±â À§Ä¡º¸´Ù ÀÛ°Å³ª
-                //ÀÌµ¿·®ÀÌ À½¼öÀÌ°í ÀÌµ¿ À§Ä¡°¡ ÃÊ±â À§Ä¡º¸´Ù Å« °æ¿ì
+                //ë°˜ëŒ€ ë°©í–¥ìœ¼ë¡œ ì´ë™í•˜ëŠ” ê²½ìš°
+                //ì´ë™ëŸ‰ì´ ì–‘ìˆ˜ì´ê³  ì´ë™ ìœ„ì¹˜ê°€ ì´ˆê¸° ìœ„ì¹˜ë³´ë‹¤ ìž‘ê±°ë‚˜
+                //ì´ë™ëŸ‰ì´ ìŒìˆ˜ì´ê³  ì´ë™ ìœ„ì¹˜ê°€ ì´ˆê¸° ìœ„ì¹˜ë³´ë‹¤ í° ê²½ìš°
                 if ((perDX >= 0.0f && x <= defPos.x) || (perDX < 0.0f && x >= defPos.x))
                 {
-                    endX = true; // X¹æÇâ ÀÌµ¿ Á¾·á
+                    endX = true; // Xë°©í–¥ ì´ë™ ì¢…ë£Œ
                 }
                 if ((perDY >= 0.0f && y <= defPos.y) || (perDY < 0.0f && y >= defPos.y))
                 {
-                    endY = true; // Y¹æÇâ ÀÌµ¿ Á¾·á
+                    endY = true; // Yë°©í–¥ ì´ë™ ì¢…ë£Œ
                 }
                 transform.Translate(new Vector3(-perDX, -perDY, defPos.z));
             }
             else
             {
-                //Á¤¹æÇâÀ¸·Î ÀÌµ¿ÇÏ´Â °æ¿ì
-                //ÀÌµ¿·®ÀÌ ¾ç¼öÀÌ°í ÀÌµ¿ À§Ä¡°¡ ÃÊ±â À§Ä¡º¸´Ù ´õ Å©°Å³ª
-                //ÀÌµ¿·®ÀÌ À½¼öÀÌ°í ÀÌµ¿ À§Ä¡°¡ ÃÊ±â + ÀÌµ¿°Å¸®º¸´Ù ÀÛÀº °æ¿ì
+                //ì •ë°©í–¥ìœ¼ë¡œ ì´ë™í•˜ëŠ” ê²½ìš°
+                //ì´ë™ëŸ‰ì´ ì–‘ìˆ˜ì´ê³  ì´ë™ ìœ„ì¹˜ê°€ ì´ˆê¸° ìœ„ì¹˜ë³´ë‹¤ ë” í¬ê±°ë‚˜
+                //ì´ë™ëŸ‰ì´ ìŒìˆ˜ì´ê³  ì´ë™ ìœ„ì¹˜ê°€ ì´ˆê¸° + ì´ë™ê±°ë¦¬ë³´ë‹¤ ìž‘ì€ ê²½ìš°
                 if ((perDX >= 0.0f && x >= defPos.x + moveX) || (perDX < 0.0f && x <= defPos.x + moveX))
                 {
                     endX = true;
@@ -89,10 +89,10 @@ public class MovingBlock : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Á¢ÃË½Ã    
+        //ì ‘ì´‰ì‹œ    
         if (collision.gameObject.tag == "Player")
         {
-            //Ãæµ¹Ã¼°¡ ÀÚ½ÄÀÌ µÈ´Ù.
+            //ì¶©ëŒì²´ê°€ ìžì‹ì´ ëœë‹¤.
             collision.transform.SetParent(transform);
             if (isMoveWhenOn)
             {
@@ -102,10 +102,10 @@ public class MovingBlock : MonoBehaviour
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        //Á¢ÃË Á¾·á½Ã
+        //ì ‘ì´‰ ì¢…ë£Œì‹œ
         if (collision.gameObject.tag == "Player")
         {
-            //ÀÚ½Ä ÇØÁ¦
+            //ìžì‹ í•´ì œ
             collision.transform.SetParent(null);
 
         }
