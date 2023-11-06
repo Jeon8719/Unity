@@ -8,11 +8,11 @@ public class TimeControl : MonoBehaviour
     public float gameTime = 0;
     public bool isTimeOver = false;
     public float displayTime = 0;
-    public float times = 0; //ÇöÀç ½Ã°£
+    public float times = 0; //í˜„ì¬ ì‹œê°„
 
     public void Start()
     {
-        //½ÃÀÛ½Ã Ä«¿îÆ®´Ù¿î Ã¼Å©°¡ µÇ¾îÀÖÀ¸¸é È­¸é¿¡ º¸ÀÌ´Â ½Ã°£À» °ÔÀÓ ½Ã°£À¸·Î ¼³Á¤
+        //ì‹œì‘ì‹œ ì¹´ìš´íŠ¸ë‹¤ìš´ ì²´í¬ê°€ ë˜ì–´ìˆìœ¼ë©´ í™”ë©´ì— ë³´ì´ëŠ” ì‹œê°„ì„ ê²Œì„ ì‹œê°„ìœ¼ë¡œ ì„¤ì •
         if(isCountDown)
             displayTime = gameTime;
     }
