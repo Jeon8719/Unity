@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class GimmickBlock : MonoBehaviour
 {
-    public float length = 0.01f; //³«ÇÏ Å½Áö °Å¸®
-    public bool isDelete = false; //³«ÇÏ ÈÄ Á¦°Å ¿©ºÎ
-    bool isFell = false; //³«ÇÏ¿¡ ´ëÇÑ Ã³¸®
-    float fadeTime = 0.5f; //ÆäÀÌµå ¾Æ¿ô
+    public float length = 0.01f; //ë‚™í•˜ íƒì§€ ê±°ë¦¬
+    public bool isDelete = false; //ë‚™í•˜ í›„ ì œê±° ì—¬ë¶€
+    bool isFell = false; //ë‚™í•˜ì— ëŒ€í•œ ì²˜ë¦¬
+    float fadeTime = 0.5f; //í˜ì´ë“œ ì•„ì›ƒ
 
     private void Start()
     {
         Rigidbody2D rbody = GetComponent<Rigidbody2D>();
         rbody.bodyType = RigidbodyType2D.Static;
-        //¸®Áöµå ¹Ùµğ¸¦ Á¤Áö »óÅÂ·Î ¼³Á¤
+        //ë¦¬ì§€ë“œ ë°”ë””ë¥¼ ì •ì§€ ìƒíƒœë¡œ ì„¤ì •
     }
 
     private void Update()
