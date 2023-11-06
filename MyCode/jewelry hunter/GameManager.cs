@@ -7,18 +7,18 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("+++°ÔÀÓ¿À¹ö/Å¬¸®¾î+++")]
+    [Header("+++ê²Œì„ì˜¤ë²„/í´ë¦¬ì–´+++")]
     public GameObject mainImage;
     public Sprite gameOver;
     public Sprite gameClear;
     public GameObject panel;
     public GameObject restartb;
     public GameObject nextb;
-    [Header("+++Å¸ÀÌ¸Ó+++")]
+    [Header("+++íƒ€ì´ë¨¸+++")]
     public GameObject timeBar;
     public GameObject timeText;
     TimeControl timeControl;
-    [Header("Á¡¼ö Ãß°¡")]
+    [Header("ì ìˆ˜ ì¶”ê°€")]
     public GameObject scoreText;
     public static int totalscore;
     public int stageScore = 0;
@@ -89,9 +89,9 @@ public class GameManager : MonoBehaviour
             {
                 if(timeControl.gameTime > 0.0f)
                 {
-                    //Á¤¼ö·Î ÇÒ´çÇØ ¼Ò¼öÁ¡ ÀÌÇÏ ¹ö¸®±â
+                    //ì •ìˆ˜ë¡œ í• ë‹¹í•´ ì†Œìˆ˜ì  ì´í•˜ ë²„ë¦¬ê¸°
                     int time = (int)timeControl.displayTime;
-                    //Å¸ÀÓ ÅØ½ºÆ®ÀÇ ÅØ½ºÆ®¸¦ timeÀ¸·Î Ã³¸®
+                    //íƒ€ì„ í…ìŠ¤íŠ¸ì˜ í…ìŠ¤íŠ¸ë¥¼ timeìœ¼ë¡œ ì²˜ë¦¬
                     timeText.GetComponent<Text>().text = time.ToString();
                     if (time == 0)
                         playerControl.Gameover();
