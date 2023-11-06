@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    [Header("½ºÅ©·Ñ Á¦ÇÑ")]
+    [Header("ìŠ¤í¬ë¡¤ ì œí•œ")]
     public float leftLimit = 0.0f;
     public float rightLimit = 0.0f;
     public float topLimit = 0.0f;
     public float bottomLimit = 0.0f;
-    [Header("¼­ºê ½ºÅ©¸°")]
+    [Header("ì„œë¸Œ ìŠ¤í¬ë¦°")]
     public GameObject subScreen;
-    [Header("°­Á¦ ½ºÅ©·Ñ¸µ")]
+    [Header("ê°•ì œ ìŠ¤í¬ë¡¤ë§")]
     public bool isForceScrollX = false;
     public float forceScrollSpeedX = 0.5f;
     public bool isForceScrollY = false;
@@ -22,18 +22,18 @@ public class CameraManager : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null) 
         {
-            //ÇÃ·¹ÀÌ¾î ÁÂÇ¥ °»½Å
+            //í”Œë ˆì´ì–´ ì¢Œí‘œ ê°±ì‹ 
             float x = player.transform.position.x;
             float y = player.transform.position.y;
             float z = transform.position.z;
 
-            //°¡·Î ¹æÇâ¿¡ ´ëÇÑ µ¿±âÈ­ (°­Á¦ ½ºÅ©·Ñ)
+            //ê°€ë¡œ ë°©í–¥ì— ëŒ€í•œ ë™ê¸°í™” (ê°•ì œ ìŠ¤í¬ë¡¤)
             if(isForceScrollX)
             {
                 x= transform.position.x + (forceScrollSpeedX * Time.deltaTime);
             }
 
-            //ÀÌµ¿ Á¦ÇÑ Àû¿ë(°¡·Î)
+            //ì´ë™ ì œí•œ ì ìš©(ê°€ë¡œ)
             if(x < leftLimit)
             {
                 leftLimit = x;
@@ -42,12 +42,12 @@ public class CameraManager : MonoBehaviour
             {
                 rightLimit = x;
             }
-            //¼¼·Î ¹æÇâ¿¡ ´ëÇÑ µ¿±âÈ­ (°­Á¦ ½ºÅ©·Ñ)
+            //ì„¸ë¡œ ë°©í–¥ì— ëŒ€í•œ ë™ê¸°í™” (ê°•ì œ ìŠ¤í¬ë¡¤)
             if (isForceScrollY)
             {
                 y = transform.position.y + (forceScrollSpeedY * Time.deltaTime);
             }
-            //ÀÌµ¿ Á¦ÇÑ Àû¿ë(¼¼·Î)
+            //ì´ë™ ì œí•œ ì ìš©(ì„¸ë¡œ)
             if (y < bottomLimit)
             {
                 bottomLimit = y;
@@ -56,17 +56,17 @@ public class CameraManager : MonoBehaviour
             {
                 topLimit = y;
             }
-            //Ä«¸Ş¶ó À§Ä¡ ÁÂÇ¥ ¼³Á¤
+            //ì¹´ë©”ë¼ ìœ„ì¹˜ ì¢Œí‘œ ì„¤ì •
             Vector3 v3 = new Vector3 (x, y+3, z);
                 transform.position = v3;
 
-            //¼­ºê ½ºÅ©¸°¿¡ ´ëÇÑ ½ºÅ©·Ñ
+            //ì„œë¸Œ ìŠ¤í¬ë¦°ì— ëŒ€í•œ ìŠ¤í¬ë¡¤
             if(subScreen != null)
             {
                 y = subScreen.transform.position.y;
                 z = subScreen.transform.position.z;
                 Vector3 v = new Vector3 (x / 2.0f, y, z);
-                //subScreenÀÇ xÁÂÇ¥´Â Ä«¸Ş¶ó ÀÌµ¿·®ÀÇ Àı¹İÀ¸·Î ¼³Á¤
+                //subScreenì˜ xì¢Œí‘œëŠ” ì¹´ë©”ë¼ ì´ë™ëŸ‰ì˜ ì ˆë°˜ìœ¼ë¡œ ì„¤ì •
                 subScreen.transform.position = v;
             }
 
