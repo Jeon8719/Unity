@@ -7,73 +7,73 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     [SerializeField] Button _showAdButton;
     [SerializeField] string _androidAdUnitId = "Rewarded_Android";
     [SerializeField] string _iOSAdUnitId = "Rewarded_iOS";
-    string _adUnitId = null; // Áö¿øµÇÁö ¾Ê´Â ÇÃ·§ÆûÀÇ °æ¿ì °ªÀº null·Î ³²¾Æ ÀÖ½À´Ï´Ù.
+    string _adUnitId = null; // ì§€ì›ë˜ì§€ ì•ŠëŠ” í”Œë«í¼ì˜ ê²½ìš° ê°’ì€ nullë¡œ ë‚¨ì•„ ìˆìŠµë‹ˆë‹¤.
 
     void Awake()
     {
-        // ÇöÀç ÇÃ·§ÆûÀÇ ±¤°í À¯´Ö ID¸¦ °¡Á®¿É´Ï´Ù.
+        // í˜„ì¬ í”Œë«í¼ì˜ ê´‘ê³  ìœ ë‹› IDë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤.
 #if UNITY_IOS
         _adUnitId = _iOSAdUnitId;
 #elif UNITY_ANDROID
         _adUnitId = _androidAdUnitId;
 #endif
 
-        //±¤°í°¡ Ç¥½ÃµÉ ÁØºñ°¡ µÉ ¶§±îÁö ¹öÆ°À» ºñÈ°¼ºÈ­ÇÕ´Ï´Ù.
+        //ê´‘ê³ ê°€ í‘œì‹œë  ì¤€ë¹„ê°€ ë  ë•Œê¹Œì§€ ë²„íŠ¼ì„ ë¹„í™œì„±í™”í•©ë‹ˆë‹¤.
         _showAdButton.interactable = false;
     }
 
-    // ±¤°í À¯´Ö¿¡ ÄÜÅÙÃ÷¸¦ ·ÎµåÇÕ´Ï´Ù.
+    // ê´‘ê³  ìœ ë‹›ì— ì½˜í…ì¸ ë¥¼ ë¡œë“œí•©ë‹ˆë‹¤.
     public void LoadAd()
     {
-        // Áß¿ä! ÃÊ±âÈ­ ÈÄ¿¡¸¸ ÄÜÅÙÃ÷¸¦ ·ÎµåÇÕ´Ï´Ù(ÀÌ ¿¹Á¦¿¡¼­ ÃÊ±âÈ­´Â ´Ù¸¥ ½ºÅ©¸³Æ®¿¡¼­ Ã³¸®ÇÔ).
+        // ì¤‘ìš”! ì´ˆê¸°í™” í›„ì—ë§Œ ì½˜í…ì¸ ë¥¼ ë¡œë“œí•©ë‹ˆë‹¤(ì´ ì˜ˆì œì—ì„œ ì´ˆê¸°í™”ëŠ” ë‹¤ë¥¸ ìŠ¤í¬ë¦½íŠ¸ì—ì„œ ì²˜ë¦¬í•¨).
         Debug.Log("Loading Ad: " + _adUnitId);
         Advertisement.Load(_adUnitId, this);
     }
 
-    // ±¤°í°¡ ¼º°øÀûÀ¸·Î ·ÎµåµÇ¸é ¹öÆ°¿¡ ¸®½º³Ê¸¦ Ãß°¡ÇÏ°í È°¼ºÈ­ÇÕ´Ï´Ù.
+    // ê´‘ê³ ê°€ ì„±ê³µì ìœ¼ë¡œ ë¡œë“œë˜ë©´ ë²„íŠ¼ì— ë¦¬ìŠ¤ë„ˆë¥¼ ì¶”ê°€í•˜ê³  í™œì„±í™”í•©ë‹ˆë‹¤.
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
         Debug.Log("Ad Loaded: " + adUnitId);
 
         if (adUnitId.Equals(_adUnitId))
         {
-            // Å¬¸¯ ½Ã ShowAd() ¸Ş¼­µå¸¦ È£ÃâÇÏµµ·Ï ¹öÆ°À» ¼³Á¤ÇÕ´Ï´Ù.
+            // í´ë¦­ ì‹œ ShowAd() ë©”ì„œë“œë¥¼ í˜¸ì¶œí•˜ë„ë¡ ë²„íŠ¼ì„ ì„¤ì •í•©ë‹ˆë‹¤.
             _showAdButton.onClick.AddListener(ShowAd);
-            // À¯Àú°¡ Å¬¸¯ÇÒ ¼ö ÀÖµµ·Ï ¹öÆ°À» È°¼ºÈ­ÇÕ´Ï´Ù.
+            // ìœ ì €ê°€ í´ë¦­í•  ìˆ˜ ìˆë„ë¡ ë²„íŠ¼ì„ í™œì„±í™”í•©ë‹ˆë‹¤.
             _showAdButton.interactable = true;
         }
     }
 
-    // À¯Àú°¡ ¹öÆ°À» Å¬¸¯ÇÒ ¶§ ½ÇÇàÇÒ ¸Ş¼­µå¸¦ ±¸ÇöÇÕ´Ï´Ù.
+    // ìœ ì €ê°€ ë²„íŠ¼ì„ í´ë¦­í•  ë•Œ ì‹¤í–‰í•  ë©”ì„œë“œë¥¼ êµ¬í˜„í•©ë‹ˆë‹¤.
     public void ShowAd()
     {
-        // ¹öÆ°À» ºñÈ°¼ºÈ­ÇÕ´Ï´Ù.
+        // ë²„íŠ¼ì„ ë¹„í™œì„±í™”í•©ë‹ˆë‹¤.
         _showAdButton.interactable = false;
-        // ±×·± ´ÙÀ½ ±¤°í¸¦ Ç¥½ÃÇÕ´Ï´Ù.
+        // ê·¸ëŸ° ë‹¤ìŒ ê´‘ê³ ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤.
         Advertisement.Show(_adUnitId, this);
     }
 
-    // Show ListenerÀÇ OnUnityAdsShowComplete Äİ¹é ¸Ş¼­µå¸¦ ±¸ÇöÇÏ¿© À¯Àú°¡ º¸»óÀ» ¹ŞÀ»Áö °áÁ¤ÇÕ´Ï´Ù.
+    // Show Listenerì˜ OnUnityAdsShowComplete ì½œë°± ë©”ì„œë“œë¥¼ êµ¬í˜„í•˜ì—¬ ìœ ì €ê°€ ë³´ìƒì„ ë°›ì„ì§€ ê²°ì •í•©ë‹ˆë‹¤.
     public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState)
     {
         if (adUnitId.Equals(_adUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
         {
             Debug.Log("Unity Ads Rewarded Ad Completed");
-            // º¸»óÀ» Áİ´Ï´Ù.
+            // ë³´ìƒì„ ì¤ë‹ˆë‹¤.
         }
     }
 
-    // Load ¹× Show ¸®½º³Ê ¿À·ù Äİ¹éÀ» ±¸ÇöÇÕ´Ï´Ù.
+    // Load ë° Show ë¦¬ìŠ¤ë„ˆ ì˜¤ë¥˜ ì½œë°±ì„ êµ¬í˜„í•©ë‹ˆë‹¤.
     public void OnUnityAdsFailedToLoad(string adUnitId, UnityAdsLoadError error, string message)
     {
         Debug.Log($"Error loading Ad Unit {adUnitId}: {error.ToString()} - {message}");
-        // ¿À·ù ¼¼ºÎ Á¤º¸¸¦ »ç¿ëÇÏ¿© ¶Ç ´Ù¸¥ ±¤°í¸¦ ·ÎµåÇÒÁö ¿©ºÎ¸¦ °áÁ¤ÇÕ´Ï´Ù.
+        // ì˜¤ë¥˜ ì„¸ë¶€ ì •ë³´ë¥¼ ì‚¬ìš©í•˜ì—¬ ë˜ ë‹¤ë¥¸ ê´‘ê³ ë¥¼ ë¡œë“œí• ì§€ ì—¬ë¶€ë¥¼ ê²°ì •í•©ë‹ˆë‹¤.
     }
 
     public void OnUnityAdsShowFailure(string adUnitId, UnityAdsShowError error, string message)
     {
         Debug.Log($"Error showing Ad Unit {adUnitId}: {error.ToString()} - {message}");
-        // ¿À·ù ¼¼ºÎ Á¤º¸¸¦ »ç¿ëÇÏ¿© ¶Ç ´Ù¸¥ ±¤°í¸¦ ·ÎµåÇÒÁö ¿©ºÎ¸¦ °áÁ¤ÇÕ´Ï´Ù.
+        // ì˜¤ë¥˜ ì„¸ë¶€ ì •ë³´ë¥¼ ì‚¬ìš©í•˜ì—¬ ë˜ ë‹¤ë¥¸ ê´‘ê³ ë¥¼ ë¡œë“œí• ì§€ ì—¬ë¶€ë¥¼ ê²°ì •í•©ë‹ˆë‹¤.
     }
 
     public void OnUnityAdsShowStart(string adUnitId) { }
@@ -81,7 +81,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
 
     void OnDestroy()
     {
-        // ¹öÆ° ¸®½º³Ê¸¦ Á¦°ÅÇÕ´Ï´Ù.
+        // ë²„íŠ¼ ë¦¬ìŠ¤ë„ˆë¥¼ ì œê±°í•©ë‹ˆë‹¤.
         _showAdButton.onClick.RemoveAllListeners();
     }
 }
