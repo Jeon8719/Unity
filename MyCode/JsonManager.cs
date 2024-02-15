@@ -77,32 +77,32 @@ public class JsonManager : MonoBehaviour
 {
     void Start()
     {
-        // Resources Æú´õ¿¡¼­ JSON ÆÄÀÏ ·Îµå
+        // Resources í´ë”ì—ì„œ JSON íŒŒì¼ ë¡œë“œ
         TextAsset json = Resources.Load<TextAsset>("Test");
 
-        // JSON ÆÄÀÏÀ» RouteData °´Ã¼·Î º¯È¯
+        // ************JSON íŒŒì¼ì„ RouteData ê°ì²´ë¡œ ë³€í™˜ jsonunity ì‚¬ìš©ì‹œ path ê°€ ì•ˆ ë¶ˆëŸ¬ì™€ì¡ŒëŠ”ë°, using Newtonsoft.Jsonì— JsonConvert.DeserializeObjectë¥¼ ì“°ë‹ˆ ì˜ ë¶ˆëŸ¬ì™€ì¡Œë‹¤.
         RouteData data = JsonConvert.DeserializeObject<RouteData>(json.text);
 
-        // RouteData¿¡¼­ ÇÊ¿äÇÑ Á¤º¸ ÃßÃâ ¹× Ãâ·Â
+        // RouteDataì—ì„œ í•„ìš”í•œ ì •ë³´ ì¶”ì¶œ ë° ì¶œë ¥
         Debug.Log("Code: " + data.code);
         Debug.Log("Message: " + data.message);
         Debug.Log("Current Date Time: " + data.currentDateTime);
 
-        // Ã¹ ¹øÂ° TraFast Á¤º¸ °¡Á®¿À±â
+        // ì²« ë²ˆì§¸ TraFast ì •ë³´ ê°€ì ¸ì˜¤ê¸°
         if (data.route.trafast.Count > 0)
         {
             TraFast firstTraFast = data.route.trafast[0];
             Debug.Log("Distance: " + firstTraFast.summary.distance);
             Debug.Log("Duration: " + firstTraFast.summary.duration);
             Debug.Log("Departure Time: " + firstTraFast.summary.departureTime);
-            // path µ¥ÀÌÅÍ È®ÀÎ
+            // path ë°ì´í„° í™•ì¸
             foreach (var point in firstTraFast.path)
             {
-                // ¸®½ºÆ® ³»ÀÇ °¢ Æ÷ÀÎÆ® Ãâ·Â
+                // ë¦¬ìŠ¤íŠ¸ ë‚´ì˜ ê° í¬ì¸íŠ¸ ì¶œë ¥
                 Debug.Log("Longitude: " + point[0] + ", Latitude: " + point[1]);
             }
 
-            // Section µ¥ÀÌÅÍ È®ÀÎ
+            // Section ë°ì´í„° í™•ì¸
             foreach (Section sectionInfo in firstTraFast.section)
             {
                 Debug.Log("Point Index: " + sectionInfo.pointIndex);
@@ -113,7 +113,7 @@ public class JsonManager : MonoBehaviour
                 Debug.Log("Speed: " + sectionInfo.speed);
             }
 
-            // Guide µ¥ÀÌÅÍ È®ÀÎ
+            // Guide ë°ì´í„° í™•ì¸
             foreach (Guide guideInfo in firstTraFast.guide)
             {
                 Debug.Log("Point Index: " + guideInfo.pointIndex);
